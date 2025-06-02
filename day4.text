@@ -1,0 +1,117 @@
+🔧 Methods for Handling Deadlock
+There are three main methods to handle deadlocks in an Operating System:
+
+1. Deadlock Prevention or Avoidance
+🔹 Goal: Don’t let the system enter a deadlock state.
+🔹 How: Break at least one of the four necessary conditions of deadlock.
+🔹 Example:
+
+Don't allow "Hold and Wait" (ask for all resources at once).
+
+Or use algorithms like Banker's Algorithm to avoid unsafe states.
+
+2. Deadlock Detection and Recovery
+🔹 Goal: Allow deadlocks to happen, but then detect them and recover.
+🔹 How:
+
+Use detection algorithms to find circular waits.
+
+Recover by:
+
+Terminating processes one by one, or
+
+Preempting resources from some processes.
+
+3. Ignore the Problem (Used in real systems)
+🔹 Goal: Do nothing if deadlock is rare.
+🔹 How:
+
+Let the system hang and simply restart.
+
+This is used in systems like Windows and UNIX/Linux, because handling deadlock can be complex and time-consuming.
+
+🧠 Simple Tip for Interview:
+“Prevent it, Detect it, or Ignore it.”
+
+
+
+
+
+🧠 Banker's Algorithm (Deadlock Avoidance)
+Purpose: Avoid deadlocks by checking if resource allocation is safe.
+
+Idea: Just like a bank, which never gives out all its money to customers, the system checks whether it can safely fulfill all processes’ maximum needs before giving resources.
+
+Key Point: It works only if each process tells the maximum resources it may need in advance.
+
+💾 Memory Management
+Memory management is how the Operating System (OS) handles memory while running multiple processes.
+
+📌 Overlays
+Load only the needed part of the program into memory.
+
+Why? Saves memory by keeping unnecessary instructions out of RAM until they are required.
+
+Example: A large program is broken into smaller parts (overlays), and only the required overlay is loaded into memory at a time.
+
+🔄 Swapping
+In multiprogramming, the OS swaps out (removes) a process from RAM to free up space for another process.
+
+The swapped-out process is stored temporarily in the hard disk, and swapped back later.
+
+This keeps the CPU busy and ensures efficient use of memory.
+
+🧱 Single Partition Allocation Scheme
+Memory is divided into two parts:
+
+OS Section – Reserved for the operating system.
+
+User Section – For a single user process at a time.
+
+Limitation: Can only handle one process in the user section, so it’s simple but not efficient for modern systems.
+
+
+
+🧱 (b) Multiple Partition Allocation Schemes
+This method allows more than one process to be stored in memory at the same time by dividing memory into multiple sections (partitions).
+
+🔸 1. Fixed Partitioning
+Memory is divided into fixed-size blocks (e.g., 1 MB each).
+
+Each block holds one process only, even if the process uses less space.
+
+Disadvantage: Leads to internal fragmentation (unused space inside a block).
+
+🔸 2. Variable Partitioning
+Memory is divided into different-sized blocks, based on the process size.
+
+More efficient than fixed partitioning.
+
+But may lead to external fragmentation (scattered free memory spaces).
+
+📌 Variable Partition Allocation Strategies
+These are methods to decide where to place a new process in memory:
+
+✅ First Fit
+Allocate the first available memory block that is large enough.
+
+Faster, but may leave gaps.
+
+🎯 Best Fit
+Allocate the smallest memory block that can fit the process.
+
+Reduces waste, but slower due to searching for best fit.
+
+🚫 Worst Fit
+Allocate the largest available memory block.
+
+Leaves large holes for future processes but is not commonly efficient.
+
+
+
+
+
+
+
+
+
