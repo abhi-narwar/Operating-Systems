@@ -1,0 +1,148 @@
+📝 Note on Memory Allocation:
+Best Fit does not always give the best results, because it can leave very small unusable holes, leading to external fragmentation.
+
+External Fragmentation happens when memory is broken into small scattered pieces, and a process cannot be allocated even though total free space is enough.
+
+🛑 Cause of External Fragmentation:
+In Fixed and Variable Partitioning, the condition that a whole process must be loaded into a single contiguous (continuous) block causes fragmentation.
+
+To solve this, Paging is used.
+
+📦 1. Paging:
+Memory is divided into fixed-size blocks:
+
+Physical memory → Frames
+
+Logical memory → Pages
+
+Each page of a process is loaded into any available frame.
+
+Pages and frames are of the same size, so no external fragmentation.
+
+Used for efficient memory utilization.
+
+🧩 2. Segmentation:
+In segmentation, memory is divided based on logical sections like functions, arrays, data, etc.
+
+Logical address space is viewed as a collection of segments, each with its own size and purpose.
+
+Segmentation provides a user-friendly view of memory.
+
+Can be implemented with or without paging:
+
+Without paging: segments are of different sizes, can cause fragmentation.
+
+With paging: segments are further divided into pages (used in modern systems).
+
+
+🔁 Page Fault (Important)
+A page fault happens when:
+
+A program tries to access a page (part of memory) that is not currently in physical memory (RAM).
+
+The OS must bring that page from secondary storage (disk) into RAM.
+
+📄 Page Replacement Algorithms
+Used when all memory frames are full and we need to decide which page to remove to make space for the new one.
+
+1. FIFO (First-In-First-Out)
+The oldest page in memory is removed first.
+
+Uses a queue to track page order.
+
+Example (3 page slots): 1, 3, 0, 3, 5, 6
+
+1 → page fault (empty slot)
+
+3 → page fault
+
+0 → page fault
+
+3 → already in memory (no fault)
+
+5 → replaces 1 (oldest) → page fault
+
+6 → replaces 3 → page fault
+
+🧠 Belady’s Anomaly:
+Sometimes increasing the number of page frames increases the number of page faults (only in FIFO, not in Optimal or LRU).
+
+2. Optimal Page Replacement
+Replace the page that will not be used for the longest time in future.
+
+Gives minimum possible page faults.
+
+🧠 Note:
+It is not used in real life, because OS can't predict future. It is used only for benchmarking.
+
+3. LRU (Least Recently Used)
+Replace the page that was least recently used (not used for the longest time in the past).
+
+Works better than FIFO in most cases.
+
+💿 Disk Scheduling (Important)
+Used to schedule I/O requests efficiently.
+
+📏 Important Terms:
+Seek Time – Time to move disk arm to correct track.
+
+Rotational Latency – Time for disk to rotate the required sector under the read/write head.
+
+Transfer Time – Time to transfer data from disk to memory.
+
+Disk Access Time = Seek Time + Rotational Latency + Transfer Time
+
+Response Time – Average time a request waits before being completed.
+
+🧮 Disk Scheduling Algorithms
+1. FCFS (First Come First Serve)
+Requests are served in the order they arrive.
+
+2. SSTF (Shortest Seek Time First)
+The request closest to the current position of the disk arm is served first.
+
+Minimizes seek time but can cause starvation (some requests may wait too long).
+
+3. SCAN (Elevator Algorithm)
+Disk arm moves in one direction, serving all requests in its path.
+
+Once it reaches the end, it reverses direction.
+
+4. C-SCAN (Circular SCAN)
+Like SCAN, but the arm goes only in one direction.
+
+After reaching the end, it returns to the beginning without servicing on the way back.
+
+Provides uniform wait time.
+
+
+Q: What are LOOK and C-LOOK disk scheduling algorithms?
+
+Answer:
+
+LOOK and C-LOOK are disk scheduling algorithms used to optimize the movement of the disk arm while servicing I/O requests.
+
+LOOK Algorithm:
+The disk arm moves in one direction and services all the requests until it reaches the last request in that direction. Instead of moving to the physical end of the disk, it reverses direction immediately after the last request, thus reducing unnecessary movement and improving efficiency.
+
+C-LOOK (Circular LOOK) Algorithm:
+C-LOOK is similar to LOOK but operates in a circular manner. The disk arm services requests in one direction up to the last request, then jumps back to the first request at the other end of the disk without servicing any requests during the return. This prevents extra delay caused by moving all the way to the disk's end, enhancing performance.
+
+Both algorithms minimize disk arm movement by avoiding traveling to the physical ends of the disk when not necessary, which helps reduce seek time and improve overall disk scheduling efficiency.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
