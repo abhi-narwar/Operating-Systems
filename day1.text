@@ -1,0 +1,61 @@
+What is an Operating System?
+An Operating System (OS) is software that acts as an interface between the user and the computer hardware. It manages all hardware resources like the CPU, memory, and storage, and provides an environment for users to execute programs efficiently and conveniently. The OS handles important tasks such as process management, resource allocation, file management, and input/output control.
+
+Types of Operating Systems:
+
+Batch OS: Executes batches of similar jobs one after another without user interaction.
+
+Multiprogramming OS: Keeps multiple jobs in memory and switches the CPU among them to maximize CPU utilization.
+
+Multitasking OS: Allows multiple programs to run simultaneously by rapidly switching CPU time, enabling user interaction with each program.
+
+Time-Sharing OS: A multitasking OS that allows multiple users to interact with the system simultaneously via input devices like keyboards.
+
+Real-Time OS: Designed for systems requiring timely and deterministic responses to specific tasks, such as embedded systems or medical devices.
+
+
+
+What is a Process?
+A process is a program that is currently being executed by the CPU. It is a dynamic entity, meaning it changes as the program runs. The Program Counter (PC) holds the address of the next instruction to be executed for that process.
+Each process is represented internally by a Process Control Block (PCB), which stores important information about the process such as its state, CPU registers, memory, and other resources.
+
+
+What is Process Scheduling?
+Process scheduling is the method used by the operating system to decide the order in which processes access the CPU. Important terms related to process scheduling are:
+
+Arrival Time: The time when the process enters the ready queue and is ready for execution.
+
+Completion Time: The time when the process finishes its execution.
+
+Burst Time: The total time required by the process for execution on the CPU.
+
+Turn Around Time: The total time taken from the arrival of the process to its completion.
+
+
+Turn Around Time=Completion Time−Arrival Time
+Waiting Time: The total time a process spends waiting in the ready queue before getting CPU time.
+
+
+Waiting Time=Turn Around Time−Burst Time
+
+
+What is a Thread?
+A thread is a lightweight process and represents the smallest unit of CPU execution. It allows a process to perform multiple tasks simultaneously by running multiple threads within the same process.
+
+Each thread has its own program counter, register set, and stack.
+
+However, threads of the same process share common resources like the code section, data section, open files, and signals.
+
+How are Threads Created?
+A new thread (or a child process) can be created using the fork() system call. If a process calls fork() n times, it can create up to 
+2^n-1  child processes
+
+
+Types of Threads:
+
+User Threads:
+These threads are managed and implemented by user-level libraries without kernel support.
+
+Kernel Threads:
+These threads are managed directly by the operating system kernel.
+
