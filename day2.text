@@ -1,0 +1,32 @@
+Scheduling Algorithms in Operating Systems:
+
+First Come First Serve (FCFS):
+The simplest scheduling algorithm where processes are scheduled in the order they arrive.
+
+Shortest Job First (SJF):
+Processes with the shortest CPU burst time are scheduled first to minimize waiting time.
+
+Shortest Remaining Time First (SRTF):
+A preemptive version of SJF. The CPU is assigned to the process with the smallest remaining burst time.
+
+Round Robin (RR) Scheduling:
+Each process gets a fixed time slice (quantum) in a cyclic order, allowing fair sharing of the CPU.
+
+Priority-Based Scheduling (Non-Preemptive):
+Processes are scheduled based on priority. Higher priority processes run first. If two processes have the same priority, the one that arrived first is scheduled.
+
+Highest Response Ratio Next (HRRN):
+Schedules processes based on the highest response ratio, calculated as:
+
+Response Ratio = (Waiting Time plus Burst Time) divided by Burst Time
+​
+ 
+This algorithm helps avoid starvation of lower priority processes.
+
+Multilevel Queue Scheduling (MLQ):
+Processes are divided into different queues based on priority. Higher priority queues are served first. Lower priority queues run only after the higher ones are empty.
+
+Multilevel Feedback Queue (MLFQ) Scheduling:
+Similar to MLQ but allows processes to move between queues based on their CPU burst behavior. If a process uses too much CPU time, it is moved to a lower-priority queue to improve responsiveness.
+
+
